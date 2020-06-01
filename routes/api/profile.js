@@ -61,8 +61,8 @@ router.post(
     const profileFields = {};
     profileFields.user = req.user.id;
     if (school) profileFields.school = school;
-    if (location) profileFields.school = location;
-    if (bio) profileFields.school = bio;
+    if (location) profileFields.location = location;
+    if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
     if (skills) {
       profileFields.skills = skills.split(', ').map((skill) => skill.trim());
@@ -71,10 +71,10 @@ router.post(
     // Build social object
     profileFields.social = {};
     if (youtube) profileFields.social.youtube = youtube;
-    if (twitter) profileFields.social.youtube = twitter;
-    if (facebook) profileFields.social.youtube = facebook;
-    if (linkedin) profileFields.social.youtube = linkedin;
-    if (instagram) profileFields.social.youtube = instagram;
+    if (twitter) profileFields.social.twitter = twitter;
+    if (facebook) profileFields.social.facebook = facebook;
+    if (linkedin) profileFields.social.linkedin = linkedin;
+    if (instagram) profileFields.social.instagram = instagram;
 
     try {
       let profile = await Profile.findOne({ user: req.user.id });
@@ -101,5 +101,41 @@ router.post(
     }
   }
 );
+
+// @route  GET api/profile
+// @desc   Get all profiles
+// @access Public
+
+router.get('/', async (req, res) => {
+  try {
+    const profiles = await Profile.find().populate('user', ['name']);
+    res.json(profiles);
+  } catch (error) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route  GET api/profile/user/:user_id
+// @desc   Get profile by user id
+// @access Public
+
+router.get('/user/:user_id', async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      user: req.params.user_id
+    }).populate('user', ['name']);
+
+    if (!profile) return res.status(400).json({ msg: 'Profile not found' });
+
+    res.json(profile);
+  } catch (error) {
+    console.error(err.message);
+    if (err.kind == 'ObjectId') {
+      return res.status(400).json({ msg: 'Profile not found' });
+    }
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = router;
