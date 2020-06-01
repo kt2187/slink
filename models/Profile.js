@@ -28,9 +28,12 @@ const profileSchema = new mongoose.Schema({
         type: String,
         required: true
       },
-      instructor: {
+      location: {
         type: String,
         required: true
+      },
+      instructor: {
+        type: String
       },
       from: {
         type: Date,
@@ -44,6 +47,9 @@ const profileSchema = new mongoose.Schema({
         default: false
       },
       description: {
+        type: String
+      },
+      awards: {
         type: String
       }
     }

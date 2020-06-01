@@ -158,4 +158,58 @@ router.delete('/', auth, async (req, res) => {
   }
 });
 
+// @route  PUT api/profile/activities
+// @desc   Add profile activities
+// @access Private
+router.put(
+  '/activities',
+  [
+    auth,
+    [
+      check('type', 'Type is required').not().isEmpty(),
+      check('location', 'Location is required').not().isEmpty(),
+      check('from', 'From date is required').not().isEmpty()
+    ]
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const {
+      type,
+      location,
+      instructor,
+      from,
+      to,
+      current,
+      description,
+      awards
+    } = req.body;
+
+    const newActivity = {
+      type,
+      location,
+      instructor,
+      from,
+      to,
+      current,
+      description,
+      awards
+    };
+    try {
+      const profile = await Profile.findOne({ user: req.user.id });
+      profile.activities.unshift(newActivity);
+
+      await profile.save();
+
+      res.json(profile);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
+
 module.exports = router;
