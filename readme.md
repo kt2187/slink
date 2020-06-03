@@ -4,6 +4,8 @@
 
 This networking app connects motivated teens to educators and employers. It is a work-in-progress and will eventually include authentication, profiles, forum posts, and teacher recommendations. It's a place for teens to showcase their academic and extracurricular accomplishments. 
 
+[![slink.png](https://i.postimg.cc/2S4fJZJ1/slink.png)](https://postimg.cc/bZNMSsqP)
+
 ## Quick Start
 
 ### Add a default.json file in config folder with the folowing
