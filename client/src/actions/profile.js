@@ -54,5 +54,6 @@ export const createProfile = (formData, history, edit = false) => async (
       type: PROFILE_ERROR,
       payload: { msg: error.response.statusText, status: error.response.status }
     });
+    console.log('Create or updated profile ends');
   }
 };
