@@ -9,7 +9,7 @@ const DashboardActions = () => {
           <i className="fas fa-user-circle text-primary"></i> Edit Profile
         </Link>
         <Link to="/add-activities" className="btn btn-light">
-          <i className="fab fa-black-tie text-primary"></i> Add Activities
+          <i className="fas fa-theater-masks text-primary"></i> Add Activities
         </Link>
         <Link to="/add-education" className="btn btn-light">
           <i className="fas fa-graduation-cap text-primary"></i> Add Education
