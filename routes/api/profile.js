@@ -22,7 +22,7 @@ router.get('/me', auth, async (req, res) => {
     res.json(profile);
   } catch (error) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Server Error Line 25');
   }
 });
 
@@ -81,7 +81,7 @@ router.post(
 
       if (profile) {
         // Update
-        profile = await Profile.findByIdAndUpdate(
+        profile = await Profile.findOneAndUpdate(
           { user: req.user.id },
           { $set: profileFields },
           { new: true }
@@ -97,7 +97,7 @@ router.post(
       res.json(profile);
     } catch (error) {
       console.error(error.message);
-      res.status(500).send('Server Error');
+      res.status(500).send('Server Error Line 100');
     }
   }
 );
@@ -112,7 +112,7 @@ router.get('/', async (req, res) => {
     res.json(profiles);
   } catch (error) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Server Error Line 115');
   }
 });
 
@@ -134,7 +134,7 @@ router.get('/user/:user_id', async (req, res) => {
     if (err.kind == 'ObjectId') {
       return res.status(400).json({ msg: 'Profile not found' });
     }
-    res.status(500).send('Server Error');
+    res.status(500).send('Server Error Line 137');
   }
 });
 
@@ -154,7 +154,7 @@ router.delete('/', auth, async (req, res) => {
     res.json({ msg: 'User deleted' });
   } catch (error) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Server Error Line 157');
   }
 });
 
@@ -207,7 +207,7 @@ router.put(
       res.json(profile);
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('Server Error');
+      res.status(500).send('Server Error Line 210');
     }
   }
 );
@@ -231,7 +231,7 @@ router.delete('/activities/:act_id', auth, async (req, res) => {
     res.json(profile);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Server Error Line 234');
   }
 });
 
@@ -288,7 +288,7 @@ router.put(
       res.json(profile);
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('Server Error');
+      res.status(500).send('Server Error Line 291');
     }
   }
 );
@@ -312,7 +312,7 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
     res.json(profile);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Server Error Line 315');
   }
 });
 
