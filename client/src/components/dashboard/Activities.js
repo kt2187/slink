@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import moment from 'moment';
 import { connect } from 'react-redux';
-//import { deleteActivities } from '../../actions/profile';
+import { deleteActivities } from '../../actions/profile';
 
-const Activities = ({ activities }) => {
+const Activities = ({ activities, deleteActivities }) => {
   const myActivity = activities.map((act) => (
     <tr key={act._id}>
       <td>{act.type}</td>
@@ -19,7 +19,12 @@ const Activities = ({ activities }) => {
         )}
       </td>
       <td>
-        <button className="btn btn-danger">Delete</button>
+        <button
+          onClick={() => deleteActivities(act._id)}
+          className="btn btn-danger"
+        >
+          Delete
+        </button>
       </td>
     </tr>
   ));
@@ -43,7 +48,8 @@ const Activities = ({ activities }) => {
 };
 
 Activities.propTypes = {
-  activities: PropTypes.array.isRequired
+  activities: PropTypes.array.isRequired,
+  deleteActivities: PropTypes.func.isRequired
 };
 
-export default Activities;
+export default connect(null, { deleteActivities })(Activities);
