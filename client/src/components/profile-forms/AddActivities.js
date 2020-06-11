@@ -63,7 +63,6 @@ const AddActivities = ({ addActivities, history }) => {
             name="instructor"
             value={instructor}
             onChange={(e) => onChange(e)}
-            required
           />
         </div>
         <div class="form-group">
@@ -73,6 +72,7 @@ const AddActivities = ({ addActivities, history }) => {
             name="location"
             value={location}
             onChange={(e) => onChange(e)}
+            required
           />
         </div>
         <div class="form-group">
@@ -91,6 +91,7 @@ const AddActivities = ({ addActivities, history }) => {
             name="from"
             value={from}
             onChange={(e) => onChange(e)}
+            required
           />
         </div>
         <div class="form-group">
