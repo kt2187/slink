@@ -48,6 +48,7 @@ router.post(
     const {
       school,
       location,
+      email,
       bio,
       status,
       skills,
@@ -63,6 +64,7 @@ router.post(
     profileFields.user = req.user.id;
     if (school) profileFields.school = school;
     if (location) profileFields.location = location;
+    if (email) profileFields.email = email;
     if (bio) profileFields.bio = bio;
     if (status) profileFields.status = status;
     if (skills) {

@@ -13,6 +13,7 @@ const EditProfile = ({
   const [formData, setFormData] = useState({
     school: '',
     location: '',
+    website: '',
     status: '',
     skills: '',
     bio: '',
@@ -31,6 +32,7 @@ const EditProfile = ({
     setFormData({
       school: loading || !profile.school ? '' : profile.school,
       location: loading || !profile.location ? '' : profile.location,
+      website: loading || !profile.website ? '' : profile.website,
       status: loading || !profile.status ? '' : profile.status,
       skills: loading || !profile.skills ? '' : profile.skills.join(','),
       bio: loading || !profile.bio ? '' : profile.bio,
@@ -45,6 +47,7 @@ const EditProfile = ({
   const {
     school,
     location,
+    website,
     status,
     skills,
     bio,
@@ -110,6 +113,16 @@ const EditProfile = ({
           <small className="form-text">
             City & state suggested (eg. Boston, MA)
           </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Website"
+            name="website"
+            value={website}
+            onChange={onChange}
+          />
+          <small className="form-text">Profile website</small>
         </div>
         <div className="form-group">
           <input

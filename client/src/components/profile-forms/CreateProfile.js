@@ -8,6 +8,7 @@ const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
     school: '',
     location: '',
+    website: '',
     status: '',
     skills: '',
     bio: '',
@@ -23,6 +24,7 @@ const CreateProfile = ({ createProfile, history }) => {
   const {
     school,
     location,
+    website,
     status,
     skills,
     bio,
@@ -88,6 +90,16 @@ const CreateProfile = ({ createProfile, history }) => {
           <small className="form-text">
             City & state suggested (eg. Boston, MA)
           </small>
+        </div>
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="Website"
+            name="website"
+            value={website}
+            onChange={(e) => onChange(e)}
+          />
+          <small className="form-text">Profile Site</small>
         </div>
         <div className="form-group">
           <input
