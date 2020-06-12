@@ -6,11 +6,7 @@ import Spinner from '../layout/Spinner';
 import DashboardActions from './DashboardActions';
 import Activities from './Activities';
 import Education from './Education';
-import {
-  getCurrentProfile,
-  deleteActivities,
-  deleteAccount
-} from '../../actions/profile';
+import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 
 const Dashboard = ({
   getCurrentProfile,
@@ -20,7 +16,7 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurrentProfile();
-  }, []);
+  }, [getCurrentProfile]);
   return loading && profile === null ? (
     <Spinner />
   ) : (

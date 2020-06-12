@@ -18,7 +18,7 @@ const ProfileItem = ({
     <div className="profile bg-light">
       <img
         src="https://via.placeholder.com/150"
-        alt="Placeholder image"
+        alt="Placeholder"
         className="round-img"
       />
       <div>
